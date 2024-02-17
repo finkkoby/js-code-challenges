@@ -15,6 +15,17 @@ BONUS: Use the reduce method to sum the even numbers from the array - try this a
 
 const numbers = [2, 5, 8, 10, 3, 6];
 
+function sumEvenNumbers(arr) {
+    return arr.reduce((acc, num) => {
+        if (num % 2 === 0) {
+            return acc + num
+        } else {
+            return acc
+        }
+    }, 0)
+}
+console.log(sumEvenNumbers([2, 5, 8, 10, 3, 6]))
+
   
 
 

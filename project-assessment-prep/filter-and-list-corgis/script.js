@@ -10,3 +10,15 @@ const dogs = [
     { name: "Toto", breed: "Terrier" },
     { name: "Susan", breed: "Corgi" },
 ];
+
+const corgis = dogs.filter(dog => dog['breed'] === "Corgi")
+
+const btn = document.querySelector('button#corgi-button')
+btn.addEventListener('click', addCorgi)
+function addCorgi(e) {
+    corgis.forEach(dog => {
+        let name = document.createElement('h2')
+        name.innerText = dog.name;
+        document.querySelector('div#corgi-container').appendChild(name)
+    })
+}

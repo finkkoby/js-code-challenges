@@ -15,4 +15,32 @@ const products = [
     { id: 5, name: "Orange", category: "Fruits" },
     { id: 6, name: "Broccoli", category: "Vegetables" },
   ];
-  
+
+let inputBox = document.querySelector('input#searchInput')
+inputBox.addEventListener('input', e => searcher(e))
+
+function searcher(e) {
+  let text = e.target.value
+  let len = text.length
+  let newArray = products.filter(product => {
+    let substring = product['name'].substring(0, len)
+    return substring.toUpperCase() === text.toUpperCase()
+  })
+  postProducts(newArray)
+}
+
+function postProducts(array) {
+  clear()
+  array.forEach(product => {
+    let productList = document.querySelector('div#productList')
+    let name = document.createElement('h3')
+    name.innerText = product['name']
+    let category = document.createElement('p')
+    category.innerText = product['category']
+    productList.append(name, category)
+  })
+}
+
+function clear() {
+  document.querySelector('#productList').innerHTML = ''
+}

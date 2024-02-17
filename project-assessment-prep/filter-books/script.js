@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
 })
 
 function filterBooks(genre) {
-
+    return books.filter(book => book['genre'] === genre)
 }
 
 function renderBookList(books) {
@@ -38,5 +38,11 @@ function renderBookList(books) {
     });
 }
 
-  
+let btn = document.getElementById('filter-button')
+btn.addEventListener('click', (e) => {
+    let inputText = document.querySelector('input#genre-input').value
+    inputText = inputText[0].toUpperCase() + inputText.slice(1)
+    let filteredBooks = filterBooks(inputText)
+    renderBookList(filteredBooks)
+})
   

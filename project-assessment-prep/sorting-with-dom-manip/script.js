@@ -11,5 +11,40 @@ const peopleArr = [
     { id: 3, name: 'Zoe', age: 11 },
     { id: 5, name: 'Adette', age: 9 },
     { id: 6, name: 'Gio', age: 15 }
-  ];
-  
+];
+let nameList = document.querySelector('ul#list')
+
+document.addEventListener("DOMContentLoaded", names(peopleArr))
+
+function names(arr) {
+  clear()
+  arr.forEach(person => {
+    let item = document.createElement('li')
+    item.innerText = `${person.name} is ${person.age} years old.`
+    nameList.appendChild(item)
+  })
+}
+
+let btn = document.querySelector('button#sortButton')
+btn.addEventListener('click', () => {
+  let sortedNames = sortNames()
+  names(sortedNames)
+})
+
+function sortNames() {
+  return peopleArr.sort(mySorter)
+}
+
+function mySorter(a, b) {
+  if (a.age < b.age) {
+    return -1
+  } else if (a.age > b.age) {
+    return 1
+  } else {
+    return 0
+  }
+}
+
+function clear() {
+  nameList.innerHTML = ''
+}
